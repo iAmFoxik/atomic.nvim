@@ -5,8 +5,7 @@ function M.setup(configColors, configStyle)
   local style = configStyle
 
   return {
-    -- Cursor = { fg = colors.text, bg = colors.cursor },
-    Normal = { fg = colors.normal_fg, bg = colors.normal_bg },
+    LspInlayHint = { fg = colors.inlay_hint_fg, bg = colors.inlay_hint_bg }
   }
 end
 

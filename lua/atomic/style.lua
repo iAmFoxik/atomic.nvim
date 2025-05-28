@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup(config)
-  local style   = {
+  local style    = {
     -- default styles
     none      = "NONE",
     bold      = "bold",
@@ -13,8 +13,8 @@ function M.setup(config)
 
   }
 
-  style.chars   = style.bold .. ',' .. style.italic
-  style.strings = style.italic
+  style.bi_style = style.bold .. ',' .. style.italic
+  style.strings  = style.italic
 
   return style
 end

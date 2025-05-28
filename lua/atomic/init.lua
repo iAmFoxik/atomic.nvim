@@ -20,13 +20,24 @@ function M.highlight(group, color)
     color.style = nil
   end
 
-  vim.api.nvim_set_hl(0, group, color)
+
+
+  -- print(vim.inspect(group))
+  -- print(vim.inspect(color))
+  local t = vim.api.nvim_set_hl(0, group, color)
+
+  -- print(vim.inspect(t))
+end
+
+function M.onColorScheme()
+  vim.api.nvim_clear_autocmds({ group = "atomic" })
 end
 
 function M.setup()
   vim.opt.termguicolors = true
 
   vim.api.nvim_command 'hi clear'
+
 
   -- local colors = require('atomic.colors').setup(config)
 
@@ -38,11 +49,14 @@ function M.setup()
     M.syntax(require(group).setup(colors, style))
   end
 
-  -- -- Неизменяемые переменные (readonly)
-  -- vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.rust", { fg = "#00FF00" }) -- Зеленый цвет
-  --
-  -- -- Изменяемые переменные (без модификатора readonly)
-  -- vim.api.nvim_set_hl(0, "@lsp.type.variable.rust", { fg = "#FF0000" }) -- Красный цвет
+  local group = vim.api.nvim_create_augroup("atomic", {})
+  vim.api.nvim_create_autocmd({ "ColorSchemePre" }, {
+    group = group,
+    pattern = { "*" },
+    callback = function()
+      require("atomic").onColorScheme()
+    end,
+  })
 end
 
 return M
