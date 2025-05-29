@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup(config)
-  local palette     = {
+  local palette            = {
     white   = '#FFFFFF',
     black   = '#080808',
     --grey
@@ -67,26 +67,25 @@ function M.setup(config)
     orange5 = '#AF5F00',
   }
 
-  local colors      = {}
+  local colors             = {}
 
-  colors.base0      = palette.grey0
-  colors.base1      = palette.grey9
-  colors.base2      = palette.grey8
-  colors.base3      = palette.grey7
-  colors.fg         = colors.base0
-  colors.gutterfg   = colors.base3
+  colors.base0             = palette.grey0
+  colors.base1             = palette.grey9
+  colors.base2             = palette.grey8
+  colors.base3             = palette.grey7
+  colors.fg                = colors.base0
+  colors.gutterfg          = colors.base3
 
-  colors.grey0      = palette.grey3
-  colors.grey1      = palette.grey2
-  colors.grey2      = palette.grey1
-  colors.overlay    = palette.grey1
-  colors.gutter     = palette.grey1
-  colors.endofbuf   = colors.gutter
-  colors.bg         = palette.grey1
-  colors.base4      = palette.grey6
-  colors.visualblue = palette.blue2
-  colors.lightblue  = palette.blue1
-
+  colors.grey0             = palette.grey3
+  colors.grey1             = palette.grey2
+  colors.grey2             = palette.grey1
+  colors.overlay           = palette.grey1
+  colors.gutter            = palette.grey1
+  colors.endofbuf          = colors.gutter
+  colors.bg                = palette.grey1
+  colors.base4             = palette.grey6
+  colors.visualblue        = palette.blue2
+  colors.lightblue         = palette.blue1
 
   -- Syntax
   colors.comments          = palette.grey8
@@ -142,7 +141,7 @@ function M.setup(config)
   colors.fg0               = palette.grey6
   colors.fg1               = palette.grey0
   colors.fg3               = palette.grey8
-  colors.directory         = palette.purple6
+  colors.directory         = palette.blue6
   colors.match_fg          = palette.grey0
   colors.match_bg          = palette.blue1
   colors.text              = colors.fg1
@@ -177,7 +176,7 @@ function M.setup(config)
   }
 
   colors.visual            = palette.blue2
-  colors.title             = palette.blue4
+  colors.title             = palette.blue5
 
   -- Special
   colors.diag              = {
