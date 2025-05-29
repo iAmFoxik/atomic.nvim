@@ -20,23 +20,33 @@ function M.highlight(group, color)
     color.style = nil
   end
 
-
-
-  -- print(vim.inspect(group))
-  -- print(vim.inspect(color))
-  local t = vim.api.nvim_set_hl(0, group, color)
-
-  -- print(vim.inspect(t))
+  vim.api.nvim_set_hl(0, group, color)
 end
 
 function M.onColorScheme()
   vim.api.nvim_clear_autocmds({ group = "atomic" })
 end
 
+function M.autocmd()
+  local group = vim.api.nvim_create_augroup("atomic", {})
+  vim.api.nvim_create_autocmd({ "ColorSchemePre" }, {
+    group = group,
+    pattern = { "*" },
+    callback = function()
+      require("atomic").onColorScheme()
+    end,
+  })
+end
+
 function M.setup()
   vim.opt.termguicolors = true
+  vim.opt.background = "light"
 
   vim.api.nvim_command 'hi clear'
+
+  if vim.fn.exists "syntax_on" then
+    vim.cmd "syntax reset"
+  end
 
 
   -- local colors = require('atomic.colors').setup(config)
@@ -49,14 +59,7 @@ function M.setup()
     M.syntax(require(group).setup(colors, style))
   end
 
-  local group = vim.api.nvim_create_augroup("atomic", {})
-  vim.api.nvim_create_autocmd({ "ColorSchemePre" }, {
-    group = group,
-    pattern = { "*" },
-    callback = function()
-      require("atomic").onColorScheme()
-    end,
-  })
+  M.autocmd()
 end
 
 return M

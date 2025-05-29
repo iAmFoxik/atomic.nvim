@@ -10,7 +10,7 @@ function M.setup(configColors, configStyle)
     CursorIM     = { link = 'Cursor' },                                                -- like Cursor, but used when in IME mode |CursorIM|
     CursorColumn = { link = 'CursorLine' },                                            -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine   = { bg = colors.bg1 },                                                -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
-    Directory    = { fg = colors.directory, bg = colors.bg0 },                         -- directory names (and other special names in listings)
+    Directory    = { fg = colors.directory },                                          -- directory names (and other special names in listings)
     DiffAdd      = { bg = colors.diff.add },                                           -- diff mode: Added line |diff.txt|
     DiffChange   = { bg = colors.diff.change },                                        -- diff mode: Changed line |diff.txt|
     DiffDelete   = { bg = colors.diff.delete },                                        -- diff mode: Deleted line |diff.txt|
