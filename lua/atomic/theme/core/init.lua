@@ -3,15 +3,16 @@ local M = {}
 local folder = "atomic.theme.core."
 
 local files = {
-  "editor",
-  "syntax",
-  "lsp",
-  "treesiter",
+    "cmp",
+    "editor",
+    "lsp",
+    "syntax",
+    "treesiter",
 }
 
 for _, value in ipairs(files) do
-  local fileSyn = folder .. value
-  table.insert(M, fileSyn)
+    local fileSyn = folder .. value
+    table.insert(M, fileSyn)
 end
 
 return M
