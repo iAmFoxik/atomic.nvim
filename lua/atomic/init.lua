@@ -3,7 +3,7 @@ local M = {}
 M.config = {
   style = "light",
   ui = {
-    enabled = true,
+    enabled = false,
     sep = "│",
   },
 }
