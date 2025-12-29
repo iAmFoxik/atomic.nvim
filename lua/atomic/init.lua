@@ -11,7 +11,7 @@ M.config = {
 function M.setup(opts)
   require("atomic.theme").setup()
 
-  M.opts = vim.tbl_extend("force", M.opts, config or {})
+  M.opts = vim.tbl_extend("force", M.config, opts or {})
   if M.opts.ui.enabled then
     require("atomic.ui").setup(M.opts.ui)
   end
