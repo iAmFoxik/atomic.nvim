@@ -3,8 +3,11 @@ local M = {}
 M.config = {
   style = "light",
   ui = {
-    enabled = false,
+    enabled = true,
     sep = "│",
+    ft_ignore = {
+      "neo-tree",
+    },
   },
 }
 

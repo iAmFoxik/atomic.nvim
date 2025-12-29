@@ -20,9 +20,11 @@ function M.render()
     return string.rep(" ", M.width) .. M.sep
   end
 
-  local lnum = M.get_lnum()
+  local lnum = tostring(M.get_lnum())
 
-  return string.format("%" .. M.width .. "d", lnum) .. M.sep
+  local pad = (" "):rep(M.width - #lnum)
+
+  return pad .. lnum .. M.sep
 end
 
 function M.setup(opts)
@@ -37,7 +39,23 @@ function M.setup(opts)
 
   M.update_width()
 
-  vim.opt.statuscolumn = "%#SignColumn#%s " .. "%#LineNr#%!v:lua.require('atomic.ui').render()"
+  local stc = "%s%{%v:lua.require('atomic.ui').render()%}"
+
+  vim.api.nvim_set_option_value("stc", stc, { scope = "global" })
+
+  local id = vim.api.nvim_create_augroup("StatusCol", {})
+
+  if opts.ft_ignore then
+    vim.api.nvim_create_autocmd("FileType", { group = id, pattern = opts.ft_ignore, command = "setlocal stc=" })
+    vim.api.nvim_create_autocmd("BufWinEnter", {
+      group = id,
+      callback = function()
+        if vim.tbl_contains(opts.ft_ignore, vim.api.nvim_get_option_value("ft", { scope = "local" })) then
+          vim.api.nvim_set_option_value("stc", "", { scope = "local" })
+        end
+      end,
+    })
+  end
 end
 
 return M
