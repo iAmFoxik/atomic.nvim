@@ -1,11 +1,11 @@
 local M = {}
 
 M.config = {
-  style = "light"
+  style = "light",
   ui = {
     enabled = true,
     sep = "│",
-  }
+  },
 }
 
 function M.setup(opts)
