@@ -42,6 +42,7 @@ function M.setup(opts)
   local stc = "%s%{%v:lua.require('atomic.ui').render()%}"
 
   vim.api.nvim_set_option_value("stc", stc, { scope = "global" })
+  vim.api.nvim_set_option_value("signcolumn", "yes:1", { scope = "global" })
 
   local id = vim.api.nvim_create_augroup("StatusCol", {})
 
