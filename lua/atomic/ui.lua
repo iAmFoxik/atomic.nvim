@@ -36,7 +36,7 @@ function M.setup(opts)
 
   M.update_width()
 
-  vim.opt.statuscolumn = "%s " .. "%!v:lua.require('atomic.ui').render()"
+  vim.opt.statuscolumn = "%#SignColumn#%s " .. "%#LineNr#%!v:lua.require('atomic.ui').render()%*"
 end
 
 return M
