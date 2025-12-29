@@ -1,7 +1,6 @@
-local core = require("atomic.theme.core")
-
 local M = {}
-local config = { style = "light" }
+
+M.config = { style = "light" }
 
 -- function M.syntax(syntax)
 --   for group, colors in pairs(syntax) do
