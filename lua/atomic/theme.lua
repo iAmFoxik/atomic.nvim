@@ -281,3 +281,5 @@ function M.setup()
     vim.api.nvim_set_hl(0, group, opts)
   end
 end
+
+return M
