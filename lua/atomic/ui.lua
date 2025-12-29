@@ -16,15 +16,13 @@ function M.get_lnum()
 end
 
 function M.render()
-  local sign = vim.v.sign or " "
-
   if vim.v.virtnum < 0 then
-    return sign .. " " .. string.rep(" ", M.width) .. M.sep
+    return string.rep(" ", M.width) .. M.sep
   end
 
   local lnum = M.get_lnum()
 
-  return string.format("%s %*d%s", sign, M.width, lnum, M.sep)
+  return string.format("%" .. M.width .. "d", lnum) .. M.sep
 end
 
 function M.setup(opts)
@@ -38,7 +36,7 @@ function M.setup(opts)
 
   M.update_width()
 
-  vim.opt.statuscolumn = "%!v:lua.require('atomic.ui').render()"
+  vim.opt.statuscolumn = "%s " .. "%!v:lua.require('atomic.ui').render()"
 end
 
 return M
