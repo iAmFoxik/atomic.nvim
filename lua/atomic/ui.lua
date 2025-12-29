@@ -30,14 +30,11 @@ end
 function M.setup(opts)
   M.sep = opts.sep
 
-  vim.api.nvim_create_autocmd(
-    {"BufEnter", "TextChanged", "TextChangerI"},
-    {
-      callback = function()
-        M.update_width()
-      end,
-    }
-  )
+  vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
+    callback = function()
+      M.update_width()
+    end,
+  })
 
   M.update_width()
 
