@@ -26,7 +26,8 @@ function M.render()
 end
 
 function M.setup(opts)
-  M.sep = opts.sep
+  opts = opts or {}
+  M.sep = opts.sep or "│"
 
   vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
     callback = function()
@@ -36,7 +37,7 @@ function M.setup(opts)
 
   M.update_width()
 
-  vim.opt.statuscolumn = "%#SignColumn#%s " .. "%#LineNr#%!v:lua.require('atomic.ui').render()%*"
+  vim.opt.statuscolumn = "%#SignColumn#%s " .. "%#LineNr#%!v:lua.require('atomic.ui').render()"
 end
 
 return M
