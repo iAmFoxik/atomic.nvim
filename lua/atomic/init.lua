@@ -3,10 +3,14 @@ local M = {}
 M.config = {
   style = "light",
   ui = {
-    enabled = true,
+    enabled = false,
     sep = "│",
     ft_ignore = {
       "neo-tree",
+    },
+    bt_ignore = {
+      "nofile",
+      "prompt",
     },
   },
 }
